@@ -1,4 +1,5 @@
 {
     "folderId" : "",
-    "logPath" : "/root/logs"
+    "logPath" : "/root/logs",
+    "logName" : "journalctl_server"
 }

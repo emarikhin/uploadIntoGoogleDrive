@@ -9,6 +9,7 @@ const config = require('config');
 
 var folderId = config.folderId;
 var logPath = config.logPath;
+var logName = config.logName;
 
 async function uploadFile(fileName) {
 
@@ -48,7 +49,7 @@ async function uploadFile(fileName) {
 }
 
 function main() {
-    var currentHour = 'server_logs' + JSON.parse(JSON.stringify(new Date())).slice(0,13); // timestamp will be used in regex to find the latest file. If run hourly, the regex will be YYYY-MM-DDTHH
+    var currentHour = logName + JSON.parse(JSON.stringify(new Date())).slice(0,13); // timestamp will be used in regex to find the latest file. If run hourly, the regex will be YYYY-MM-DDTHH
     var findFileToUpload = new RegExp(`${currentHour}`, 'gi');
     var filenames = fs.readdirSync(logPath);
     var fileToUpload = filenames.filter(file => file.match(findFileToUpload)).toString(); // the file we're going to upload
