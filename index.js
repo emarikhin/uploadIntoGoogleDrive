@@ -48,7 +48,7 @@ async function uploadFile(file, folder) {
 }
 
 function main() {
-    var today = 'test_full' + JSON.parse(JSON.stringify(new Date())).slice(0,13); // 
+    var today = 'logs_server1' + JSON.parse(JSON.stringify(new Date())).slice(0,13); // 
     var findOriginalFile = new RegExp(`${today}`, 'gi');
     var filenames = fs.readdirSync(logPath);
     var todaysFile = filenames.filter(file => file.match(findOriginalFile)).toString();
@@ -58,7 +58,7 @@ function main() {
         const fileName = path.join(__dirname, todaysFile);
         uploadFile(fileName, folderId).catch(console.error);
     } else {
-        throw new Error('file to upload not found in the folder')
+        throw new Error('File to upload not found in the folder')
     }
 }
 
